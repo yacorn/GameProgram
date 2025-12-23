@@ -33,6 +33,8 @@ public class Character : MonoBehaviour
         direction.x = Input.GetAxisRaw("Horizontal");
         direction.z = Input.GetAxisRaw("Vertical");
 
+        direction.Normalize();
+
         transform.position += direction * Time.deltaTime * speed;
 
         Debug.Log("방향" + direction);
