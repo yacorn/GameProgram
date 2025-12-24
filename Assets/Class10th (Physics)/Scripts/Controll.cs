@@ -8,18 +8,18 @@ public class Controll : MonoBehaviour
 
     [SerializeField] private Rigidbody rb;
     [SerializeField] float speed;
+    [SerializeField] float jumpForce;
     [SerializeField] ForceMode forceMode;
     [SerializeField] UnityEngine.Vector3 direction;
     // 처음 시작 위치
     private UnityEngine.Vector3 startPos;
     private bool initCommand = false;
+    public bool inZone = false;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        forceMode = ForceMode.Force;
         startPos = transform.position;
-        speed = 5f;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -50,13 +50,26 @@ public class Controll : MonoBehaviour
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
             transform.position = startPos;
+            jumpForce = 5.0f;
             initCommand = false;
         } 
         else
         {
-            UnityEngine.Vector3 movement = new UnityEngine.Vector3(direction.x, 0f, direction.z).normalized;
-            rb.AddForce(movement * speed, forceMode);    
+            rb.AddForce(direction.normalized * speed, forceMode);
         }
-        
     }
+
+    public void Soar()
+    {
+        jumpForce = 0.05f;
+        forceMode = ForceMode.Impulse;
+        direction = Vector3.up;
+    }
+
+    public void Initialize()
+    {
+        forceMode = ForceMode.Force;
+        jumpForce = 5.0f;
+    }
+
 }
