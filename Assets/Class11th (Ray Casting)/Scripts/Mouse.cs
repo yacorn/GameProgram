@@ -41,9 +41,10 @@ public class Mouse : MonoBehaviour
             if(Physics.Raycast(ray, out raycastHit, Mathf.Infinity))
             {
                 Debug.DrawLine(ray.origin, raycastHit.point, Color.red, duration);
+
                 if(raycastHit.collider.TryGetComponent<Equipment>(out Equipment equipment))
                 {
-                    equipment.Hit();
+                    equipment.OnHit();
                 }
             }
         }
