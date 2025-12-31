@@ -63,7 +63,7 @@ public class Controll : MonoBehaviour
     {
         jumpForce = 0.05f;
         forceMode = ForceMode.Impulse;
-        direction = Vector3.up;
+        direction = Vector3.up * jumpForce;
     }
 
     public void Initialize()

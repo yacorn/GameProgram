@@ -6,9 +6,9 @@ public class Tent : Equipment
 {
     public event Action OnReset;
 
-    [SerializeField] float sacleStep = 0.25f;
-    [SerializeField] float roatateStep = 15f;
-    [SerializeField] Vector3 defaultScale = Vector3.one;
+    [SerializeField] float sacleStep;
+    [SerializeField] float roatateStep;
+    [SerializeField] Vector3 defaultScale;
  
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,7 +34,7 @@ public class Tent : Equipment
 
     void Reset()
     {
-        transform.localScale = Vector3.one;
+        transform.localScale = defaultScale;
         transform.rotation = Quaternion.identity;
     }
 

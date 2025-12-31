@@ -5,7 +5,7 @@ public class Mouse : MonoBehaviour
 {
     [SerializeField] Ray ray;
     [SerializeField] RaycastHit raycastHit;
-    [SerializeField] float duration = 1.0f;
+    [SerializeField] float duration;
 
     private Camera mainCam;
 
