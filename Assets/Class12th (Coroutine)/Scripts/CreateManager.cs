@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
 public class CreateManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class CreateManager : MonoBehaviour
     // private GameObject instance;
     // [SerializeField] private float timer;
     [SerializeField] private float interval = 5f;
+    [SerializeField] Transform[] transforms;
 
     void Start()
     {
@@ -33,6 +35,7 @@ public class CreateManager : MonoBehaviour
     {
         var wait = new WaitForSeconds(interval);
         float lastInterval = interval;
+        int random;
 
         while (true)
         {
@@ -42,11 +45,13 @@ public class CreateManager : MonoBehaviour
                 lastInterval = interval;
                 Debug.Log($"시간이{interval}초로 변경되었습니다.");
             }
+            random = Random.Range(0, transforms.Length);
             yield return wait; // 5초 대기
             Debug.Log(interval + "초 경과");
             GameObject newObject = Instantiate(prefab, gameObject.transform);
-            newObject.transform.position = new Vector3(Random.Range(-2f, 2f), 0f, 0f);        
-            newObject.transform.rotation *= Quaternion.Euler(0f, 180.0f, 0f);
+            newObject.transform.position = transforms[random].position;
+            Debug.Log($"현재 선택된 위치는 {transforms[random].position}입니다.");
+            // newObject.transform.rotation *= Quaternion.Euler(0f, 180.0f, 0f);
         }
         
     }

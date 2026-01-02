@@ -507,6 +507,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CreateManager
   prefab: {fileID: 2066896392038628118, guid: 45288819fde2143449a96207b14db0bb, type: 3}
   interval: 5
+  transforms:
+  - {fileID: 1228998549}
+  - {fileID: 1280127914}
+  - {fileID: 825259823}
 --- !u!4 &1440060507
 Transform:
   m_ObjectHideFlags: 0
